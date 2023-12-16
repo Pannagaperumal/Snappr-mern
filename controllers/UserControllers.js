@@ -6,9 +6,10 @@ import User from "../models/User.js"
 const registerUser = async(req,res,next)=>{
     try{
         const {name,email,password} = req.body;
+        const reffphoto = req.file.buffer;
 
-        //check user exists
-        const userExists= await User.findOne({email});
+        // check user exists
+        const userExists= await User.findOne({"email":email});
         if(userExists){
             throw new Error("User already exists");
         }  
@@ -17,7 +18,8 @@ const registerUser = async(req,res,next)=>{
         let user = await User.create({
             name,
             email,
-            password
+            password,
+            reffphoto
         });
     return res.status(201).json({
         _id:user._id,

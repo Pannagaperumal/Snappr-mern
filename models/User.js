@@ -1,10 +1,10 @@
-import {Schema, model} from 'mongoose';
+import mongoose from "mongoose";
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from 'jsonwebtoken';
 
 
 //User shema definition
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     avatar:{type:String,default:""},
     name:{type:String,required:true},
     email:{type:String,required:true},
@@ -13,10 +13,7 @@ const UserSchema = new Schema({
     verification_code:{type:String,required:false},
     admin:{type:Boolean,default:false},
     photographer:{type:Boolean,default:false},
-
-    reffphoto: {type: String, data:Buffer},
-    
-      // array of event IDs associated with the photo
+    reffphoto: {type: Buffer},// array of event IDs associated with the photo
     eventIds: [{type: String,required: true}],
 
 },
@@ -25,6 +22,7 @@ const UserSchema = new Schema({
 
 }
 );
+
 
 //hashing the password before saving
 UserSchema.pre('save', async function (next){
@@ -37,7 +35,7 @@ UserSchema.pre('save', async function (next){
 
 //method to add token
 UserSchema.methods.generateJWT= async function(){
-    return await jsonwebtoken.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:'30d'})
+    return jsonwebtoken.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:'30d'})
 };
 
 UserSchema.methods.comparePassword= async function (enteredPassword){
@@ -45,5 +43,7 @@ UserSchema.methods.comparePassword= async function (enteredPassword){
 };
 
 
-const User=model("User",UserSchema);
+
+
+const User=mongoose.model('User',UserSchema);
 export default User; 

@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+import { Schema as _Schema, model } from 'mongoose';
 
-const Schema = mongoose.Schema;
+const Schema = _Schema;
 
 const studioSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+  _id: _Schema.Types.ObjectId,
   name: {
     type: String,
     required: true,
@@ -12,7 +12,7 @@ const studioSchema = new Schema({
   phone: String,
   email: String,
   managerId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: _Schema.Types.ObjectId,
     required: true,
     ref: 'Users',
   },
@@ -26,4 +26,4 @@ const studioSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Studios', studioSchema);
+export default model('Studios', studioSchema);

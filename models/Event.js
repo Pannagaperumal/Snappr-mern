@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import {Schema, model} from 'mongoose';
+
 
 const Event = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     name: {
       type: String,
       required: true
@@ -22,12 +22,12 @@ const Event = new Schema({
     },
     location: String,
     studioId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       required: true,
       ref: 'Studios'
     },
     photographers: [{
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Users'
     }],
     createdAt: {
