@@ -51,17 +51,18 @@ const EventController = {
         } catch (error) {
             res.status(500).send({ message: 'Internal server error' });
         }
+    },
+
+    getAllEvents : async (req, res) => {
+        try {
+            const events = await Event.find();
+            res.status(200).send(events);
+        } catch (error) {
+            res.status(500).send({ message: 'Internal server error' });
+        }
     }
 
 };
-//get all events
-const getAllEvents = async (req, res) => {
-    try {
-        const events = await Event.find();
-        res.status(200).send(events);
-    } catch (error) {
-        res.status(500).send({ message: 'Internal server error' });
-    }
-};
+
 
 export default EventController;
