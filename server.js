@@ -7,8 +7,10 @@ import errorResponserHandler from "./middleware/errorHandler.js";
 // import { invalidPathHandler } from "./middleware/errorHandler.js";
 
 //routes
-import UserRoutes from "./routes/UserRoutes.js";
-import EventRoutes from "./routes/EventRoutes.js";
+import UserController from "./controllers/UserController.js";
+import EventController from "./controllers/EventController.js";
+import PhotographerController from "./controllers/PhotographerController.js";
+
 
 dotenv.config();
 connectdb();
@@ -29,8 +31,9 @@ app.get('/', (req,res)=>{
 
 //add the routes for the api here
 //adding the apis to the express app (ex: added user api)
-app.use('/api/users',UserRoutes);   
-app.use('api/events/',EventRoutes);
+app.use('/api/users',UserController);   
+app.use('api/events/',EventController);
+app.use('api/',PhotographerController);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>console.log(`server is running on port ${PORT}`))

@@ -7,14 +7,13 @@
 #     "password": "User@123456"
 # }
 
-GET http://localhost:5000/api/users/profile
+POST http://localhost:5000/api/photographers/create
 
 Content-Type: application/json
 
 {
-  "user": "65e72dcac779bce3c7644077",
-  "name": "username_0",
-  "email": "test@gmail.com",
-  "admin": false,
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTcyZGNhYzc3OWJjZTNjNzY0NDA3NyIsImlhdCI6MTcwOTY1MDc3OSwiZXhwIjoxNzEyMjQyNzc5fQ.pQxFrDvJVmvKwIOInAdFdNx-FeLlbP9oVrWesJAM0oA"
+  "name": "test_grapher",
+  "id":"Test-01",
+  "contactNumber":"7975942038",
+  "email": "ps.pannaga@deepcognition.ai",
 }
