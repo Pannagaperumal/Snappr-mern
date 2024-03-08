@@ -18,14 +18,7 @@ const PhotographerController = {
       // Create a photographer without saving to the database
       const photographer = new Photographer({ name, id, contactNumber, email });
   
-      // Send setup password email
-    //   const transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //       user: 'ps.pannaga@deepcognition.ai',
-    //       pass: 'Panna@123',
-    //     },
-    //   });
+  
   
     //   const mailOptions = {
     //     from: 'ps.pannaga@deepcognition.ai',
