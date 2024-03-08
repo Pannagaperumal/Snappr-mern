@@ -1,7 +1,6 @@
 import Event from '../models/Event.js';
 import User from '../models/User.js';
-// give me contrller functions to handle the events like create, update,delete anda assign photographer to the event etc
-
+import express from 'express';
 
 const EventController = {
     // Create Event
@@ -65,4 +64,11 @@ const EventController = {
 };
 
 
-export default EventController;
+const router = express.Router();
+router.post('/create', EventController.createEvent);
+router.put('/update/:id', EventController.updateEvent);
+router.delete('/delete/:id', EventController.deleteEvent);
+router.put('/assign/:eventId/photographer/:photographerId', EventController.assignPhotographer);
+router.get('/all', EventController.getAllEvents);
+
+export default router;
